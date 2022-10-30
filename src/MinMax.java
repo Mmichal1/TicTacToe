@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class MinMax {
 
     static int MIN = -1000;
@@ -83,15 +85,19 @@ public class MinMax {
 
         int bestScore = MIN;
         int bestMove = -1;
+        boolean isBoardClear = true;
 
+        // In case if board is clear and the algorithm is making the first move, then the best move will always be
+        // the middle position on the board.
         for (int i = 0; i < board.length; i++) {
-            if (board[i].equals("X") ) {
+            if (Objects.equals(board[i], "X") || Objects.equals(board[i], "O")) {
                 System.out.println("SHIT");
-                break;
-            } else if (board[i].equals("O")) {
-                System.out.println("SHIT");
+                isBoardClear = false;
                 break;
             }
+        }
+
+        if (isBoardClear) {
             return 4;
         }
 
